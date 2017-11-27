@@ -1,5 +1,5 @@
 class RPNMario
-  def self.calc
-    puts '1500'
+  def start
+    puts 'it works'
   end
 end
