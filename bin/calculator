@@ -2,5 +2,4 @@
 
 require 'rpn-mario'
 
-calculator = RPNMario.new
-calculator.start
+RPNMario.start
