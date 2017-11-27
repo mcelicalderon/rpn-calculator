@@ -1,3 +1,4 @@
+require 'pry'
 require 'rpn-mario'
 
 RSpec.configure do |config|
