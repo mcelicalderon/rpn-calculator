@@ -8,6 +8,7 @@ module RPNMario
   def start
     # Here is where we could read and write to another input
     # using stdin and stdout by default
-    calculator = Calculator.new(IoInterface::Standard)
+    calculator = Calculator.new(IoInterface::Standard.new)
+    calculator.start
   end
 end
