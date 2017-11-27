@@ -1,6 +1,4 @@
-require 'rpn-mario/calculator'
-require 'rpn-mario/io_interface/abstract'
-require 'rpn-mario/io_interface/standard'
+Dir.glob('lib/**/*.rb').each { |file| require File.expand_path(file) }
 
 module RPNMario
   module_function

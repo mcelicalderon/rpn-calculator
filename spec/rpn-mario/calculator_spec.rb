@@ -13,7 +13,7 @@ RSpec.describe RPNMario::Calculator do
     context 'when input is always valid' do
       before do
         allow(io_interface).to receive(:read_input).and_return(
-          '1 2', '5', '+', '2', '/', nil
+          '1 2', '5', '+', nil
         )
       end
 
