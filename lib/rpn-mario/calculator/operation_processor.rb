@@ -1,7 +1,7 @@
 module RPNMario
   module Calculator
     class OperationProcessor
-      def initialize(operator:, operands: [])
+      def initialize(operator, operands = [])
         @operator = operator
         @operands = operands
       end
