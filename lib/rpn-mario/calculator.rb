@@ -12,30 +12,25 @@ module RPNMario
 
     def start
       while input = io_interface.read_input
-        next unless input_valid?(input)
-        next unless parsing_valid?(input)
+        validator_result = input_validator.validate(input)
+        unless validator_result.valid?
+          print_validation_error(validator_result)
+          next
+        end
+
+        parsed_result = input_parser.parse(input)
+        unless parsed_result.valid?
+          print_validation_error(parsed_result)
+          next
+        end
+
+        parsed_result.parsed_elements
       end
     end
 
     private
 
     attr_reader :input_stack, :io_interface, :input_validator, :input_parser
-
-    def parsing_valid?(input)
-      parsing_result = input_parser.parse(input)
-      unless parsing_result.valid?
-        print_validation_error(parsing_result)
-      end
-      parsing_result.valid?
-    end
-
-    def input_valid?(input)
-      validation_result = input_validator.validate(input)
-      unless validation_result.valid?
-        print_validation_error(validation_result)
-      end
-      validation_result.valid?
-    end
 
     def print_validation_error(result)
       io_interface.display_output(result.error)
