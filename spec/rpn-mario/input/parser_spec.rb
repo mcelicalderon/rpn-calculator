@@ -14,6 +14,11 @@ RSpec.describe RPNMario::Input::Parser do
       expect(parsed_result.parsed_elements).to eq(['12', '4', '+', '5', '-', '3', '*', '*'])
     end
 
+    it 'splits two operators separated by an operand and no whitespace correctly' do
+      parsed_result = described_class.new(allowed_operands).parse('12 4*5 +5.5 - 3 ** ')
+      expect(parsed_result.parsed_elements).to eq(['12', '4', '*', '5', '+', '5.5', '-', '3', '*', '*'])
+    end
+
     it 'takes period as a valid part of a number' do
       parsed_result = described_class.new(allowed_operands).parse('12 4 +5.5 - 3 ** ')
       expect(parsed_result.parsed_elements).to eq(['12', '4', '+', '5.5', '-', '3', '*', '*'])

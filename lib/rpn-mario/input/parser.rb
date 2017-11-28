@@ -30,13 +30,17 @@ module RPNMario
 
       def join_consecutive_numbers(split_string)
         split_string.each_with_index.inject([]) do |result, (element, index)|
-          if index == 0 || !is_number_or_period?(split_string[index - 1])
+          if index == 0 || any_operand?([split_string[index - 1], element])
             result << element
-          elsif is_number_or_period?(split_string[index - 1]) && is_number_or_period?(element)
+          else
             result[-1] += element
           end
           result
         end
+      end
+
+      def any_operand?(elements)
+        elements.any? { |e| !is_number_or_period?(e) }
       end
 
       def is_number_or_period?(number_string)
