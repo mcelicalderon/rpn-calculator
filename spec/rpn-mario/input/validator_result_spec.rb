@@ -2,7 +2,7 @@ require 'spec_helper'
 
 RSpec.describe RPNMario::Input::ValidatorResult do
   context 'when the result has an error message' do
-    subject { described_class.new('Invalid characters: y, l') }
+    subject { described_class.new(['y', 'l']) }
 
     it { is_expected.not_to be_valid }
 
@@ -14,7 +14,7 @@ RSpec.describe RPNMario::Input::ValidatorResult do
   end
 
   context 'when the result has no error' do
-    subject { described_class.new }
+    subject { described_class.new([]) }
 
     it { is_expected.to be_valid }
 

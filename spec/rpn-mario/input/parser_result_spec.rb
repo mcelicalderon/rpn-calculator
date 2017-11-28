@@ -2,25 +2,29 @@ require 'spec_helper'
 
 RSpec.describe RPNMario::Input::ParserResult do
   context 'when the result has an error message' do
-    subject { described_class.new(['54.', '.'], 'Invalid operands or numbers: 54., .') }
+    let(:parsed_input) { ['1', '5', '+', '.', '10', '*', '5.1.3'] }
+
+    subject { described_class.new(parsed_input, ['.', '5.1.3']) }
 
     it { is_expected.not_to be_valid }
 
     describe '#error' do
       it 'returns an error message' do
-        expect(subject.error).to eq('Invalid operands or numbers: 54., .')
+        expect(subject.error).to eq('Invalid operands or numbers: ., 5.1.3')
       end
     end
 
-    describe '#elements' do
+    describe '#parsed_elements' do
       it 'returns the original elements' do
-        expect(subject.elements).to eq(['54.', '.'])
+        expect(subject.parsed_elements).to eq(parsed_input)
       end
     end
   end
 
   context 'when the result has no error' do
-    subject { described_class.new(['1', '4', '+']) }
+    let(:parsed_input) { ['1', '5', '+', '10', '*'] }
+
+    subject { described_class.new(parsed_input, []) }
 
     it { is_expected.to be_valid }
 
@@ -30,9 +34,9 @@ RSpec.describe RPNMario::Input::ParserResult do
       end
     end
 
-    describe '#elements' do
+    describe '#parsed_elements' do
       it 'returns the original elements' do
-        expect(subject.elements).to eq(['1', '4', '+'])
+        expect(subject.parsed_elements).to eq(parsed_input)
       end
     end
   end

@@ -1,15 +1,25 @@
 module RPNMario
   module Input
     class ValidatorResult
-      def initialize(error = nil)
-        @error = error
+      def initialize(invalid_characters = [])
+        @invalid_characters = invalid_characters
       end
 
       def valid?
-        error.nil?
+        invalid_characters.empty?
       end
 
-      attr_reader :error
+      def error
+        "Invalid characters: #{invalid_character_list}" unless valid?
+      end
+
+      private
+
+      attr_reader :invalid_characters
+
+      def invalid_character_list
+        invalid_characters.join(', ')
+      end
     end
   end
 end

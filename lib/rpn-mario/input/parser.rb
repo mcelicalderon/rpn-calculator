@@ -6,19 +6,18 @@ module RPNMario
       end
 
       def parse(input_string)
-        parsed_input = clean_whitespace(
+        parsed_input = input_without_whitespace(
           join_consecutive_numbers(input_string.split(''))
         )
-        errors = parsed_input_errors(parsed_input)
-        message = errors.any? ? "Invalid operands or numbers: #{errors.join(', ')}" : nil
-        ParserResult.new(parsed_input, message)
+        invalid_elements = parsed_input_errors(parsed_input)
+        ParserResult.new(parsed_input, invalid_elements)
       end
 
       private
 
       attr_reader :allowed_operands
 
-      def clean_whitespace(split_string)
+      def input_without_whitespace(split_string)
         split_string.select { |e| e!= ' ' }
       end
 

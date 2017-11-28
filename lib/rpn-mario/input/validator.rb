@@ -7,17 +7,12 @@ module RPNMario
 
       def validate(input_string)
         invalid_characters = input_string.scan(invalid_arguments_regex)
-        ValidatorResult.new(error_message(invalid_characters))
+        ValidatorResult.new(invalid_characters)
       end
 
       private
 
       attr_reader :invalid_arguments_regex
-
-      def error_message(invalid_characters)
-        return nil if invalid_characters.empty?
-        "Invalid characters: #{invalid_characters.join(', ')}"
-      end
     end
   end
 end
