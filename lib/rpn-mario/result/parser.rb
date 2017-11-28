@@ -1,6 +1,6 @@
 module RPNMario
-  module Input
-    class ParserResult
+  module Result
+    class Parser
       def initialize(parsed_elements = [], invalid_elements = [])
         @parsed_elements  = parsed_elements
         @invalid_elements = invalid_elements

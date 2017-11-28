@@ -1,6 +1,6 @@
 module RPNMario
-  module Input
-    class ValidatorResult
+  module Result
+    class Validator
       def initialize(invalid_characters = [])
         @invalid_characters = invalid_characters
       end

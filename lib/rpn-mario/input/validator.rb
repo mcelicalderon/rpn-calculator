@@ -7,7 +7,7 @@ module RPNMario
 
       def validate(input_string)
         invalid_characters = input_string.scan(invalid_arguments_regex)
-        ValidatorResult.new(invalid_characters)
+        Result::Validator.new(invalid_characters)
       end
 
       private

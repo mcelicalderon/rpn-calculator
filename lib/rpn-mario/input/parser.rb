@@ -10,7 +10,7 @@ module RPNMario
           join_consecutive_numbers(input_string.split(''))
         )
         invalid_elements = parsed_input_errors(parsed_input)
-        ParserResult.new(parsed_input, invalid_elements)
+        Result::Parser.new(parsed_input, invalid_elements)
       end
 
       private

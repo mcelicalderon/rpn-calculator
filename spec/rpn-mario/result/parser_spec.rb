@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe RPNMario::Input::ParserResult do
+RSpec.describe RPNMario::Result::Parser do
   context 'when the result has an error message' do
     let(:parsed_input) { ['1', '5', '+', '.', '10', '*', '5.1.3'] }
 
