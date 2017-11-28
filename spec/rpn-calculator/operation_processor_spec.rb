@@ -21,12 +21,12 @@ RSpec.describe RPNCalculator::OperationProcessor do
       let(:validator_result) { double(:validator_result, valid?: false, error: 'Invalid input') }
 
       it 'returns an invalid processor result' do
-        processor_result = subject.process('some invalid input')
+        processor_result = subject.process([], 'some invalid input')
         expect(processor_result).not_to be_valid
       end
 
       it 'returns a processor result with an error message' do
-        processor_result = subject.process('some invalid input')
+        processor_result = subject.process([], 'some invalid input')
         expect(processor_result.error).to eq('Invalid input')
       end
     end
@@ -36,12 +36,12 @@ RSpec.describe RPNCalculator::OperationProcessor do
       let(:parser_result)    { double(:parser_result, valid?: false, error: 'Invalid input after parsing') }
 
       it 'returns an invalid processor result' do
-        processor_result = subject.process('invalid even after char validation')
+        processor_result = subject.process([], 'invalid even after char validation')
         expect(processor_result).not_to be_valid
       end
 
       it 'returns a processor result with an error message' do
-        processor_result = subject.process('some invalid input')
+        processor_result = subject.process([], 'some invalid input')
         expect(processor_result.error).to eq('Invalid input after parsing')
       end
     end
