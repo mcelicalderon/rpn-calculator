@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe RPNMario::Calculator do
+RSpec.describe RPNMario::IoProcessor do
   let(:io_interface) { double(:test_io_interface) }
 
   subject { described_class.new(io_interface) }
