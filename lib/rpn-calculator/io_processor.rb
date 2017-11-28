@@ -1,4 +1,4 @@
-module RPNMario
+module RPNCalculator
   class IoProcessor
     INVALID_ARGUMENTS_REGEX = /[^\d\s\+\-\/\*\.]/.freeze
     ALLOWED_OPERANDS        = ['+', '-', '/', '*'].freeze

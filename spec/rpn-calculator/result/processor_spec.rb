@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe RPNMario::Result::Processor do
+RSpec.describe RPNCalculator::Result::Processor do
   let(:error_string) { 'Validation, parsing or operation error' }
 
   context 'when the result has an error message' do

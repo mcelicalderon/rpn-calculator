@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe RPNMario::Input::Parser do
+RSpec.describe RPNCalculator::Input::Parser do
   let(:allowed_operands) { ['+', '-', '/', '*'] }
 
   describe '#parse' do

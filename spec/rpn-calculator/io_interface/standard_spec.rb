@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe RPNMario::IoInterface::Standard do
+RSpec.describe RPNCalculator::IoInterface::Standard do
   subject { described_class.new }
 
   describe '#read_input' do

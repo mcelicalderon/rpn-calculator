@@ -1,17 +1,17 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'rpn-mario/version'
+require 'rpn-calculator/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "rpn-mario"
-  spec.version       = RPNMario::VERSION
+  spec.name          = "rpn-calculator"
+  spec.version       = RPNCalculator::VERSION
   spec.platform      = Gem::Platform::RUBY
   spec.authors       = ["Mario Celi"]
   spec.email         = ["mcelicalderon@gmail.com"]
 
   spec.summary       = "Basic RPN Calculator"
-  spec.homepage      = "https://github.com/mcelicalderon/rpn-mario"
+  spec.homepage      = "https://github.com/mcelicalderon/rpn-calculator"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -- lib/*`.split("\n").reject do |f|

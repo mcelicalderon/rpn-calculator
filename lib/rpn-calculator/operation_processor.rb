@@ -1,4 +1,4 @@
-module RPNMario
+module RPNCalculator
   class OperationProcessor
     def initialize(allowed_operands, input_validator, input_parser)
       @aallowed_operands = allowed_operands

@@ -1,4 +1,4 @@
-module RPNMario
+module RPNCalculator
   module Input
     class Validator
       def initialize(invalid_arguments_regex)

@@ -1,4 +1,4 @@
-module RPNMario
+module RPNCalculator
   module Result
     class Processor
       def initialize(result = [], error = nil)

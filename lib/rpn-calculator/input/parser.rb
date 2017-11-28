@@ -1,4 +1,4 @@
-module RPNMario
+module RPNCalculator
   module Input
     class Parser
       def initialize(allowed_operands)

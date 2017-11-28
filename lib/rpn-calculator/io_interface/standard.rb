@@ -1,4 +1,4 @@
-module RPNMario
+module RPNCalculator
   module IoInterface
     class Standard < Abstract
       def read_input

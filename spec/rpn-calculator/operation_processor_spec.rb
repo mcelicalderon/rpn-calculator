@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-RSpec.describe RPNMario::OperationProcessor do
-  let(:input_validator)  { instance_double(RPNMario::Input::Validator) }
-  let(:input_parser)     { instance_double(RPNMario::Input::Parser) }
+RSpec.describe RPNCalculator::OperationProcessor do
+  let(:input_validator)  { instance_double(RPNCalculator::Input::Validator) }
+  let(:input_parser)     { instance_double(RPNCalculator::Input::Parser) }
   let(:allowed_operands) { ['+', '-', '/', '*'] }
   let(:validator_result) { double(:validator_result, valid?: true) }
   let(:parser_result)    { double(:parser_result, valid?: true) }

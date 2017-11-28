@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe RPNMario::Input::Validator do
+RSpec.describe RPNCalculator::Input::Validator do
   subject do
     described_class.new(/[^\d\s\+\-\/\*]/.freeze)
   end

@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require 'rpn-mario'
+require 'rpn-calculator'
 
-RPNMario.start
+RPNCalculator.start

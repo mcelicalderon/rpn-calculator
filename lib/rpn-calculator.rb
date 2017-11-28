@@ -1,6 +1,6 @@
 Dir.glob('lib/**/*.rb').each { |file| require File.expand_path(file) }
 
-module RPNMario
+module RPNCalculator
   module_function
 
   def start

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe RPNMario::Result::Validator do
+RSpec.describe RPNCalculator::Result::Validator do
   context 'when the result has an error message' do
     subject { described_class.new(['y', 'l']) }
 

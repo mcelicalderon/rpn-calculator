@@ -1,4 +1,4 @@
-module RPNMario
+module RPNCalculator
   module Result
     class Validator
       def initialize(invalid_characters = [])

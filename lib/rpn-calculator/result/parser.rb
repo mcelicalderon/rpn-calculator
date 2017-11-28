@@ -1,4 +1,4 @@
-module RPNMario
+module RPNCalculator
   module Result
     class Parser
       def initialize(parsed_elements = [], invalid_elements = [])
