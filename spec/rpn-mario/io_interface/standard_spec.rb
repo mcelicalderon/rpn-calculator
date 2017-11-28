@@ -9,6 +9,24 @@ RSpec.describe RPNMario::IoInterface::Standard do
 
       expect(subject.read_input).to eq('1 2 +')
     end
+
+    it 'prints a > characters before requesting user input' do
+      allow(STDIN).to receive(:gets)
+
+      expect { subject.read_input }.to output('> ').to_stdout
+    end
+
+    it 'returns nil if the user input is nil' do
+      allow(STDIN).to receive(:gets).and_return(nil)
+
+      expect(subject.read_input).to be_nil
+    end
+
+    it 'returns nil if the user input is `q`' do
+      allow(STDIN).to receive(:gets).and_return("q\n")
+
+      expect(subject.read_input).to be_nil
+    end
   end
 
   describe '#display_output' do
