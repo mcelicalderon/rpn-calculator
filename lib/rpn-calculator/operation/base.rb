@@ -6,7 +6,7 @@ module RPNCalculator
       end
 
       def initialize(operands)
-        @operands = operands
+        @operands = operands.compact
       end
 
       def result

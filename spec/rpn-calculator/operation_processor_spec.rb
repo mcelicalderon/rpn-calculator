@@ -60,21 +60,45 @@ RSpec.describe RPNCalculator::OperationProcessor do
         it 'returns a valid operation result' do
           allow(parser_result).to receive(:parsed_elements).and_return(valid_input.split(' '))
 
-          processor_result = subject.process([], valid_input)
+          processor_result = subject.process([], "Parsing is mocked so don't mind this")
           expect(processor_result).to be_valid
         end
 
         it 'returns a valid operation result with the correct operation value' do
           allow(parser_result).to receive(:parsed_elements).and_return(valid_input.split(' '))
 
-          processor_result = subject.process([], valid_input)
+          processor_result = subject.process([], "Parsing is mocked so don't mind this")
           expect(processor_result.result).to eq([4.0])
         end
 
         it 'returns correct operation value plus remaining elements in the stack' do
           allow(parser_result).to receive(:parsed_elements).and_return((valid_input + ' 10').split(' '))
-          processor_result = subject.process([], valid_input)
+          processor_result = subject.process([], "Parsing is mocked so don't mind this")
           expect(processor_result.result).to eq([4.0, '10'])
+        end
+      end
+
+      context 'when operations are correct in a more complex format' do
+        let(:valid_input) { '1 2 3 4 + - + 2 /' }
+
+        it 'returns a valid operation result' do
+          allow(parser_result).to receive(:parsed_elements).and_return(valid_input.split(' '))
+
+          processor_result = subject.process([], "Parsing is mocked so don't mind this")
+          expect(processor_result).to be_valid
+        end
+
+        it 'returns a valid operation result with the correct operation value' do
+          allow(parser_result).to receive(:parsed_elements).and_return(valid_input.split(' '))
+
+          processor_result = subject.process([], "Parsing is mocked so don't mind this")
+          expect(processor_result.result).to eq([-2.0])
+        end
+
+        it 'returns correct operation value plus remaining elements in the stack' do
+          allow(parser_result).to receive(:parsed_elements).and_return((valid_input + ' 10').split(' '))
+          processor_result = subject.process([], "Parsing is mocked so don't mind this")
+          expect(processor_result.result).to eq([-2.0, '10'])
         end
       end
 
@@ -84,14 +108,14 @@ RSpec.describe RPNCalculator::OperationProcessor do
         it 'returns an invalid operation result' do
           allow(parser_result).to receive(:parsed_elements).and_return(invalid_input.split(' '))
 
-          processor_result = subject.process([], invalid_input)
+          processor_result = subject.process([], "Parsing is mocked so don't mind this")
           expect(processor_result).not_to be_valid
         end
 
         it 'returns the error for an invalid operation' do
           allow(parser_result).to receive(:parsed_elements).and_return(invalid_input.split(' '))
 
-          processor_result = subject.process([], invalid_input)
+          processor_result = subject.process([], "Parsing is mocked so don't mind this")
           expect(processor_result.error).to eq('Invalid operation: 4.0 *')
         end
 
@@ -99,7 +123,7 @@ RSpec.describe RPNCalculator::OperationProcessor do
           multiple_input_errors = invalid_input + ' + 4 / /'
           allow(parser_result).to receive(:parsed_elements).and_return(multiple_input_errors.split(' '))
 
-          processor_result = subject.process([], multiple_input_errors)
+          processor_result = subject.process([], "Parsing is mocked so don't mind this")
           expect(processor_result.error).to eq('Invalid operation: 4.0 *')
         end
       end

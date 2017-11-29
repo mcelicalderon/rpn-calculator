@@ -53,10 +53,6 @@ iterative parts of the code that could probably be simplified.
 Another thing I would like to add to the CLI tool is the ability to parse options
 so it can use different interfaces or other configs. This shouldn't take long.
 
-One thing that the application doesn't handle correctly is long expressions.
-Operation precedence is not taken into account. If you are writing a long expression
-in this calculator, it will work correctly as long as it is expressed in order from left to right. I would also like to implement this functionality correctly.
-
 ### How to Run
 #### Install
 This project has been published to [RubyGems](https://rubygems.org/). So, to use it,
@@ -73,7 +69,7 @@ to do it locally, you can also try:
 $ git clone https://github.com/mcelicalderon/rpn-calculator.git
 $ cd rpn-calculator
 $ gem build rpn-calculator.gemspec
-$ gem install rpn-calculator-0.2.1.gem
+$ gem install rpn-calculator-0.3.0.gem
 ```
 
 **Note:** if you don't want to install RubyGems you can also try running the binary file
