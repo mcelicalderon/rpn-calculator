@@ -14,11 +14,15 @@ module RPNCalculator
       attr_reader :operands
 
       def valid?
-        raise 'must implement in subclass'
+        operands.size == 2
       end
 
       def float_operands
         operands.map { |operator| Float(operator) }
+      end
+
+      def invalid_operation_result
+        Result::Operation.new([], operands)
       end
     end
   end

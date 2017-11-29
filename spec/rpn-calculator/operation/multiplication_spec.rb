@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe RPNCalculator::Operation::Addition do
+RSpec.describe RPNCalculator::Operation::Multiplication do
   context 'when the operands are invalid' do
     subject { described_class.new(['1']) }
 
@@ -12,11 +12,11 @@ RSpec.describe RPNCalculator::Operation::Addition do
   end
 
   context 'when the operands are valid' do
-    subject { described_class.new(['7', '3.5']) }
+    subject { described_class.new(['7', '3']) }
 
     describe '#result' do
       it 'returns the sum of the operands' do
-        expect(subject.result.result).to eq(10.5)
+        expect(subject.result.result).to eq(21.0)
       end
     end
   end
