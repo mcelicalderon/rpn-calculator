@@ -1,8 +1,8 @@
 module RPNCalculator
   module Input
     class Parser
-      def initialize(allowed_operands)
-        @allowed_operands = allowed_operands
+      def initialize(allowed_operators)
+        @allowed_operators = allowed_operators
       end
 
       def parse(input_string)
@@ -15,7 +15,7 @@ module RPNCalculator
 
       private
 
-      attr_reader :allowed_operands
+      attr_reader :allowed_operators
 
       def input_without_whitespace(split_string)
         split_string.select { |e| e!= ' ' }
@@ -23,14 +23,14 @@ module RPNCalculator
 
       def parsed_input_errors(parsed_input)
         parsed_input.inject([]) do |result, element|
-          result << element unless allowed_operands.include?(element) || is_number?(element)
+          result << element unless allowed_operators.include?(element) || is_number?(element)
           result
         end
       end
 
       def join_consecutive_numbers(split_string)
         split_string.each_with_index.inject([]) do |result, (element, index)|
-          if index == 0 || any_operand?([split_string[index - 1], element])
+          if index == 0 || any_operator?([split_string[index - 1], element])
             result << element
           else
             result[-1] += element
@@ -39,7 +39,7 @@ module RPNCalculator
         end
       end
 
-      def any_operand?(elements)
+      def any_operator?(elements)
         elements.any? { |e| !is_number_or_period?(e) }
       end
 

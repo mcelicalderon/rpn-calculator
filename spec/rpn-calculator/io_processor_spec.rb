@@ -35,8 +35,8 @@ RSpec.describe RPNCalculator::IoProcessor do
   #
   #     it 'displays an error message when input has invalid numbers after character validation' do
   #       allow(io_interface).to  receive(:read_input).and_return('1 2', '4 . .55', '1.1.5 + ', nil)
-  #       expect(io_interface).to receive(:display_output).once.ordered.with('Invalid operands or numbers: .')
-  #       expect(io_interface).to receive(:display_output).once.ordered.with('Invalid operands or numbers: 1.1.5')
+  #       expect(io_interface).to receive(:display_output).once.ordered.with('Invalid operator or numbers: .')
+  #       expect(io_interface).to receive(:display_output).once.ordered.with('Invalid operator or numbers: 1.1.5')
   #
   #       subject.start
   #     end

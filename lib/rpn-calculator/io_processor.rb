@@ -1,15 +1,15 @@
 module RPNCalculator
   class IoProcessor
     INVALID_ARGUMENTS_REGEX = /[^\d\s\+\-\/\*\.]/.freeze
-    ALLOWED_OPERANDS        = ['+', '-', '/', '*'].freeze
+    ALLOWED_OPERATORS       = ['+', '-', '/', '*'].freeze
 
     def initialize(io_interface)
       @io_interface = io_interface
       @input_stack  = []
       @operation_processor = OperationProcessor.new(
-        ALLOWED_OPERANDS,
+        ALLOWED_OPERATORS,
         Input::Validator.new(INVALID_ARGUMENTS_REGEX),
-        Input::Parser.new(ALLOWED_OPERANDS)
+        Input::Parser.new(ALLOWED_OPERATORS)
       )
     end
 

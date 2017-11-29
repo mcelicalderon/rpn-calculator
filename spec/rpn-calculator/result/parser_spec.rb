@@ -10,7 +10,7 @@ RSpec.describe RPNCalculator::Result::Parser do
 
     describe '#error' do
       it 'returns an error message' do
-        expect(subject.error).to eq('Invalid operands or numbers: ., 5.1.3')
+        expect(subject.error).to eq('Invalid operators or numbers: ., 5.1.3')
       end
     end
 

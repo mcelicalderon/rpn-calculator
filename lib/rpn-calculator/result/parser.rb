@@ -11,7 +11,7 @@ module RPNCalculator
       end
 
       def error
-        "Invalid operands or numbers: #{invalid_element_list}" unless valid?
+        "Invalid operators or numbers: #{invalid_element_list}" unless valid?
       end
 
       attr_reader :parsed_elements, :invalid_elements

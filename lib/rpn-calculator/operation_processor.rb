@@ -1,9 +1,9 @@
 module RPNCalculator
   class OperationProcessor
-    def initialize(allowed_operands, input_validator, input_parser)
-      @aallowed_operands = allowed_operands
-      @input_validator   = input_validator
-      @input_parser      = input_parser
+    def initialize(allowed_operators, input_validator, input_parser)
+      @aallowed_operators = allowed_operators
+      @input_validator    = input_validator
+      @input_parser       = input_parser
     end
 
     def process(previous_operations, input)
@@ -18,7 +18,7 @@ module RPNCalculator
 
     private
 
-    attr_reader :input_validator, :input_parser, :allowed_operands
+    attr_reader :input_validator, :input_parser, :allowed_operators
 
     def process_operations(operations)
 

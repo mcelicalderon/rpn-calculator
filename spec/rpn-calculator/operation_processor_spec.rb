@@ -1,15 +1,15 @@
 require 'spec_helper'
 
 RSpec.describe RPNCalculator::OperationProcessor do
-  let(:input_validator)  { instance_double(RPNCalculator::Input::Validator) }
-  let(:input_parser)     { instance_double(RPNCalculator::Input::Parser) }
-  let(:allowed_operands) { ['+', '-', '/', '*'] }
-  let(:validator_result) { double(:validator_result, valid?: true) }
-  let(:parser_result)    { double(:parser_result, valid?: true) }
+  let(:input_validator)   { instance_double(RPNCalculator::Input::Validator) }
+  let(:input_parser)      { instance_double(RPNCalculator::Input::Parser) }
+  let(:allowed_operators) { ['+', '-', '/', '*'] }
+  let(:validator_result)  { double(:validator_result, valid?: true) }
+  let(:parser_result)     { double(:parser_result, valid?: true) }
 
   describe '#process' do
     subject do
-      described_class.new(allowed_operands, input_validator, input_parser)
+      described_class.new(allowed_operators, input_validator, input_parser)
     end
 
     before do
