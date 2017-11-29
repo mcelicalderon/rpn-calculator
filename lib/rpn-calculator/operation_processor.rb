@@ -13,6 +13,7 @@ module RPNCalculator
 
       parser_result = input_parser.parse(input)
       return Result::Processor.new([], parser_result.error) unless parser_result.valid?
+
       process_operations(previous_operations + parser_result.parsed_elements)
     end
 
@@ -22,10 +23,12 @@ module RPNCalculator
 
     def process_operations(operations)
       operation_stack = []
+
       while operations.size > 0
         element = operations.shift
+
         if operation_symbols.include?(element)
-          result = operation_classes.fetch(element).new(operation_stack).result
+          result = operation_classes.fetch(element).operate(operation_stack)
           return invalid_processor_result(result) unless result.valid?
 
           operation_stack = [result.result]

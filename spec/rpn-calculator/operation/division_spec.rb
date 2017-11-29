@@ -2,21 +2,37 @@ require 'spec_helper'
 
 RSpec.describe RPNCalculator::Operation::Division do
   context 'when the operands are invalid' do
-    subject { described_class.new(['7', '2', '3']) }
+    let(:invalid_elements) { ['1'] }
+
+    subject { described_class.new(invalid_elements) }
 
     describe '#result' do
       it 'returns an invalid operation result' do
         expect(subject.result).not_to be_valid
       end
     end
+
+    describe '#.operate' do
+      it 'returns an invalid operation result' do
+        expect(described_class.operate(invalid_elements)).not_to be_valid
+      end
+    end
   end
 
   context 'when the operands are valid' do
-    subject { described_class.new(['8', '16']) }
+    let(:valid_elements) { ['8', '16'] }
+
+    subject { described_class.new(valid_elements) }
 
     describe '#result' do
       it 'returns the sum of the operands' do
         expect(subject.result.result).to eq(0.5)
+      end
+    end
+
+    describe '#.operate' do
+      it 'rreturns the sum of the operands' do
+        expect(described_class.operate(valid_elements).result).to eq(0.5)
       end
     end
   end

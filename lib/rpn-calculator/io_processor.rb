@@ -9,6 +9,7 @@ module RPNCalculator
     def start
       while (input = io_interface.read_input)
         processor_result = operation_processor.process(input_stack, input)
+
         if processor_result.valid?
           print_result_array(processor_result.result)
           @input_stack = processor_result.result

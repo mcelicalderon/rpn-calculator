@@ -1,6 +1,10 @@
 module RPNCalculator
   module Operation
     class Base
+      def self.operate(operands)
+        new(operands).result
+      end
+
       def initialize(operands)
         @operands = operands
       end
@@ -23,6 +27,10 @@ module RPNCalculator
 
       def invalid_operation_result(operation)
         Result::Operation.new(operation, [], operands)
+      end
+
+      def operation_string
+        raise 'must implement in subclass'
       end
     end
   end
