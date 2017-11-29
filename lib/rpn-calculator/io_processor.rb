@@ -1,37 +1,29 @@
-require 'rpn-calculator/operation/addition'
-require 'rpn-calculator/operation/subtraction'
-require 'rpn-calculator/operation/multiplication'
-require 'rpn-calculator/operation/division'
-
 module RPNCalculator
   class IoProcessor
-    OPERATION_CLASSES = {
-      '+' => Operation::Addition,
-      '-' => Operation::Subtraction,
-      '*' => Operation::Multiplication,
-      '/' => Operation::Division
-    }.freeze
-    ALLOWED_OPERATORS       = OPERATION_CLASSES.keys.freeze
-    INVALID_ARGUMENTS_REGEX = /[^\d\s\+\-\/\*\.]/.freeze
-
-    def initialize(io_interface)
+    def initialize(io_interface, operation_processor)
       @io_interface = io_interface
       @input_stack  = []
-      @operation_processor = OperationProcessor.new(
-        OPERATION_CLASSES,
-        Input::Validator.new(INVALID_ARGUMENTS_REGEX),
-        Input::Parser.new(ALLOWED_OPERATORS)
-      )
+      @operation_processor = operation_processor
     end
 
     def start
       while (input = io_interface.read_input)
-        # operate
+        processor_result = operation_processor.process(input_stack, input)
+        if processor_result.valid?
+          print_result_array(processor_result.result)
+          @input_stack = processor_result.result
+        else
+          io_interface.display_output(processor_result.error)
+        end
       end
     end
 
     private
 
-    attr_reader :input_stack, :io_interface
+    attr_reader :io_interface, :operation_processor, :input_stack
+
+    def print_result_array(result)
+      io_interface.display_output(result.join(' '))
+    end
   end
 end
