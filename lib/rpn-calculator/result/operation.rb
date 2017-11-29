@@ -1,7 +1,8 @@
 module RPNCalculator
   module Result
     class Operation
-      def initialize(result, invalid_operation_elements = [])
+      def initialize(operation, result, invalid_operation_elements = [])
+        @operation                  = operation
         @result                     = result
         @invalid_operation_elements = invalid_operation_elements
       end
@@ -18,10 +19,10 @@ module RPNCalculator
 
       private
 
-      attr_reader :invalid_operation_elements
+      attr_reader :invalid_operation_elements, :operation
 
       def invalid_operation
-        invalid_operation_elements.join(' ')
+        invalid_operation_elements.join(' ') + " #{operation}"
       end
     end
   end

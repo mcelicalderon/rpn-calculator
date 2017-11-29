@@ -4,9 +4,15 @@ module RPNCalculator
   module Operation
     class Subtraction < Base
       def result
-        return invalid_operation_result unless valid?
+        return invalid_operation_result(operation_string) unless valid?
 
-        Result::Operation.new(float_operands.reduce(&:-))
+        Result::Operation.new(operation_string, float_operands.reduce(&:-))
+      end
+
+      private
+
+      def operation_string
+        '-'
       end
     end
   end
