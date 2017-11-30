@@ -3,6 +3,7 @@
 Simple RPN calculator
 
 [![Build Status](https://travis-ci.org/mcelicalderon/rpn-calculator.svg?branch=master)](https://travis-ci.org/mcelicalderon/rpn-calculator)
+[![Gem Version](https://badge.fury.io/rb/rpn-calculator.svg)](https://badge.fury.io/rb/rpn-calculator)
 
 ### Solution Description
 
