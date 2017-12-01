@@ -70,7 +70,7 @@ to do it locally, you can also try:
 $ git clone https://github.com/mcelicalderon/rpn-calculator.git
 $ cd rpn-calculator
 $ gem build rpn-calculator.gemspec
-$ gem install rpn-calculator-0.3.0.gem
+$ gem install rpn-calculator-0.4.0.gem
 ```
 
 **Note:** if you don't want to install RubyGems you can also try running the binary file
