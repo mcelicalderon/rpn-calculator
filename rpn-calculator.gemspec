@@ -10,6 +10,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Mario Celi"]
   spec.email         = ["mcelicalderon@gmail.com"]
 
+  spec.required_ruby_version = '>= 1.9.3'
+
   spec.summary       = "Basic RPN Calculator"
   spec.homepage      = "https://github.com/mcelicalderon/rpn-calculator"
   spec.license       = "MIT"
