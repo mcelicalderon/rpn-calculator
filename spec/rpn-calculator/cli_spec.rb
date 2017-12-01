@@ -3,14 +3,17 @@ require 'spec_helper'
 RSpec.describe RPNCalculator::CLI do
   let(:io_interface) { double(:test_io_interface) }
   let(:operation_processor) do
-    RPNCalculator::OperationProcessor.new(
-      RPNCalculator::OPERATION_CLASSES,
+    RPNCalculator::OperationProcessor.new(RPNCalculator::OPERATION_CLASSES)
+  end
+  let(:input_processor) do
+    RPNCalculator::InputProcessor.new(
+      operation_processor,
       RPNCalculator::Input::Validator.new(RPNCalculator::INVALID_ARGUMENTS_REGEX),
       RPNCalculator::Input::Parser.new(RPNCalculator::ALLOWED_OPERATORS)
     )
   end
 
-  subject { described_class.new(io_interface, operation_processor) }
+  subject { described_class.new(io_interface, input_processor) }
 
   before do
     allow(io_interface).to receive(:display_output)
