@@ -26,7 +26,7 @@ module RPNCalculator
       result_stack = operations.inject([]) do |stack, element|
         if operation_symbols.include?(element)
           result = operation_classes.fetch(element)
-                                    .operate([stack.pop, stack.pop].reverse)
+                                    .operate(stack.pop(2))
           return invalid_processor_result(result) unless result.valid?
           stack.push(result.result)
         else
