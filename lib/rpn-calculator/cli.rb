@@ -1,5 +1,5 @@
 module RPNCalculator
-  class IoProcessor
+  class CLI
     def initialize(io_interface, operation_processor)
       @io_interface = io_interface
       @input_stack  = []
@@ -7,8 +7,8 @@ module RPNCalculator
     end
 
     def start
-      while (input = io_interface.read_input)
-        processor_result = operation_processor.process(input_stack, input)
+      while (input_expression = io_interface.read_input)
+        processor_result = operation_processor.process(input_expression, input_stack)
 
         if processor_result.valid?
           print_result_array(processor_result.result)

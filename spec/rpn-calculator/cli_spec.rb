@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe RPNCalculator::IoProcessor do
+RSpec.describe RPNCalculator::CLI do
   let(:io_interface) { double(:test_io_interface) }
   let(:operation_processor) do
     RPNCalculator::OperationProcessor.new(
