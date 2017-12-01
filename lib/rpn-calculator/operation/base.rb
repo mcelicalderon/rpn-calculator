@@ -21,10 +21,6 @@ module RPNCalculator
         operands.size == 2
       end
 
-      def float_operands
-        operands.map { |operator| Float(operator) }
-      end
-
       def invalid_operation_result(operation)
         Result::Operation.new(operation, [], operands)
       end

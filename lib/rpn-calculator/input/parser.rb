@@ -18,19 +18,19 @@ module RPNCalculator
       attr_reader :allowed_operators
 
       def input_without_whitespace(split_string)
-        split_string.select { |e| e!= ' ' }
+        split_string.reject { |e| e == ' ' }
       end
 
       def parsed_input_errors(parsed_input)
         parsed_input.inject([]) do |result, element|
-          result << element unless allowed_operators.include?(element) || is_number?(element)
+          result << element unless allowed_operators.include?(element) || number?(element)
           result
         end
       end
 
       def join_consecutive_numbers(split_string)
         split_string.each_with_index.inject([]) do |result, (element, index)|
-          if index == 0 || any_operator?([split_string[index - 1], element])
+          if index.zero? || any_operator?([split_string[index - 1], element])
             result << element
           else
             result[-1] += element
@@ -40,14 +40,14 @@ module RPNCalculator
       end
 
       def any_operator?(elements)
-        elements.any? { |e| !is_number_or_period?(e) }
+        elements.any? { |e| !number_or_period?(e) }
       end
 
-      def is_number_or_period?(number_string)
-        number_string == '.' || is_number?(number_string)
+      def number_or_period?(number_string)
+        number_string == '.' || number?(number_string)
       end
 
-      def is_number?(number_string)
+      def number?(number_string)
         true if Float(number_string)
       rescue ArgumentError
         false

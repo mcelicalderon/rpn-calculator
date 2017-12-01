@@ -6,7 +6,7 @@ module RPNCalculator
       def result
         return invalid_operation_result(operation_string) unless valid?
 
-        Result::Operation.new(operation_string, float_operands.reduce(&:-))
+        Result::Operation.new(operation_string, operands.reduce(&:-))
       end
 
       private

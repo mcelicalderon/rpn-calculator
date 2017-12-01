@@ -16,7 +16,7 @@ RSpec.describe RPNCalculator::Result::Parser do
 
     describe '#parsed_elements' do
       it 'returns the original elements' do
-        expect(subject.parsed_elements).to eq(parsed_input)
+        expect(subject.result).to eq(parsed_input)
       end
     end
   end
@@ -36,7 +36,7 @@ RSpec.describe RPNCalculator::Result::Parser do
 
     describe '#parsed_elements' do
       it 'returns the original elements' do
-        expect(subject.parsed_elements).to eq(parsed_input)
+        expect(subject.result).to eq(parsed_input)
       end
     end
   end
