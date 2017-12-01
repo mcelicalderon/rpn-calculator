@@ -2,4 +2,4 @@
 
 require 'rpn-calculator'
 
-RPNCalculator.start
+RPNCalculator.start_cli_tool

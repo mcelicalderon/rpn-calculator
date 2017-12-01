@@ -8,11 +8,11 @@ module RPNCalculator
     end
 
     # Refator needed, process should receive parsed input
-    def process(previous_operations, input)
-      validator_result = input_validator.validate(input)
+    def process(input_expression, previous_operations = [])
+      validator_result = input_validator.validate(input_expression)
       return Result::Processor.new([], validator_result.error) unless validator_result.valid?
 
-      parser_result = input_parser.parse(input)
+      parser_result = input_parser.parse(input_expression)
       return Result::Processor.new([], parser_result.error) unless parser_result.valid?
 
       process_operations(previous_operations + parser_result.parsed_elements)
