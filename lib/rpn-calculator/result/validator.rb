@@ -1,6 +1,8 @@
+require 'rpn-calculator/result/input'
+
 module RPNCalculator
   module Result
-    class Validator
+    class Validator < Input
       def initialize(invalid_characters = [])
         @invalid_characters = invalid_characters
       end
@@ -11,6 +13,10 @@ module RPNCalculator
 
       def error
         "Invalid characters: #{invalid_character_list}" unless valid?
+      end
+
+      def result
+        []
       end
 
       private

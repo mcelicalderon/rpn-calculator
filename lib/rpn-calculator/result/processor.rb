@@ -1,6 +1,8 @@
+require 'rpn-calculator/result/input'
+
 module RPNCalculator
   module Result
-    class Processor
+    class Processor < Input
       def initialize(result = [], error = nil)
         @result = result
         @error  = error

@@ -1,6 +1,8 @@
+require 'rpn-calculator/result/input'
+
 module RPNCalculator
   module Result
-    class Parser
+    class Parser < Input
       def initialize(parsed_elements = [], invalid_elements = [])
         @parsed_elements  = parsed_elements
         @invalid_elements = invalid_elements
@@ -14,9 +16,13 @@ module RPNCalculator
         "Invalid operators or numbers: #{invalid_element_list}" unless valid?
       end
 
-      attr_reader :parsed_elements, :invalid_elements
+      def result
+        @parsed_elements
+      end
 
       private
+
+      attr_reader :invalid_elements
 
       def invalid_element_list
         invalid_elements.join(', ')
