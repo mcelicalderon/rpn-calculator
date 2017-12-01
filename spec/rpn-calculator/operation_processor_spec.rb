@@ -42,7 +42,7 @@ RSpec.describe RPNCalculator::OperationProcessor do
 
       it 'returns correct operation value plus remaining elements in the stack' do
         processor_result = subject.process(valid_expression + ['10'])
-        expect(processor_result.result).to eq([4.0, '10'])
+        expect(processor_result.result).to eq([4.0, 10.0])
       end
 
       context 'when operations are correct in a more complex format' do
@@ -60,7 +60,7 @@ RSpec.describe RPNCalculator::OperationProcessor do
 
         it 'returns correct operation value plus remaining elements in the stack' do
           processor_result = subject.process(valid_expression + ['10'])
-          expect(processor_result.result).to eq([-2.0, '10'])
+          expect(processor_result.result).to eq([-2.0, 10.0])
         end
       end
     end

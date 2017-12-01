@@ -8,12 +8,11 @@ module RPNCalculator
     def process(parsed_expression)
       result_stack = parsed_expression.inject([]) do |stack, element|
         if operation_symbols.include?(element)
-          result = operation_classes.fetch(element)
-                                    .operate(stack.pop(2))
+          result = operation_classes.fetch(element).operate(stack.pop(2))
           return invalid_processor_result(result) unless result.valid?
           stack.push(result.result)
         else
-          stack.push(element)
+          stack.push(as_float(element))
         end
         stack
       end
@@ -26,6 +25,10 @@ module RPNCalculator
 
     def invalid_processor_result(result)
       Result::Processor.new([], result.error)
+    end
+
+    def as_float(num_string)
+      Float(num_string)
     end
   end
 end

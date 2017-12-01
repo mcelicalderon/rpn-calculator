@@ -28,8 +28,8 @@ RSpec.describe RPNCalculator::CLI do
       end
 
       it 'outputs the result of a given operation' do
-        expect(io_interface).to receive(:display_output).once.ordered.with('1')
-        expect(io_interface).to receive(:display_output).once.ordered.with('1 5.1')
+        expect(io_interface).to receive(:display_output).once.ordered.with('1.0')
+        expect(io_interface).to receive(:display_output).once.ordered.with('1.0 5.1')
         expect(io_interface).to receive(:display_output).once.ordered.with('6.1')
 
         subject.start
@@ -48,7 +48,7 @@ RSpec.describe RPNCalculator::CLI do
       it 'displays an error message when input has invalid numbers after character validation' do
         allow(io_interface).to  receive(:read_input).and_return('1 2', '4 . .55', '1.1.5 + ', nil)
 
-        expect(io_interface).to receive(:display_output).once.ordered.with('1 2')
+        expect(io_interface).to receive(:display_output).once.ordered.with('1.0 2.0')
         expect(io_interface).to receive(:display_output).once.ordered.with('Invalid operators or numbers: .')
         expect(io_interface).to receive(:display_output).once.ordered.with('Invalid operators or numbers: 1.1.5')
 

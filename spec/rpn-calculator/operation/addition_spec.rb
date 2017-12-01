@@ -2,7 +2,7 @@ require 'spec_helper'
 
 RSpec.describe RPNCalculator::Operation::Addition do
   context 'when the operands are invalid' do
-    let(:invalid_elements) { ['1'] }
+    let(:invalid_elements) { [1.0] }
 
     subject { described_class.new(invalid_elements) }
 
@@ -20,7 +20,7 @@ RSpec.describe RPNCalculator::Operation::Addition do
   end
 
   context 'when the operands are valid' do
-    let(:valid_elements) { ['7', '3.5'] }
+    let(:valid_elements) { [7.0, 3.5] }
 
     subject { described_class.new(valid_elements) }
 
