@@ -10,7 +10,7 @@ module RPNCalculator
     '/' => Operation::Division
   }.freeze
   ALLOWED_OPERATORS       = OPERATION_CLASSES.keys.freeze
-  INVALID_ARGUMENTS_REGEX = /[^\d\s\+\-\/\*\.]/.freeze
+  INVALID_ARGUMENTS_REGEX = /[^\d\s\.#{Regexp.quote(ALLOWED_OPERATORS.join)}]/.freeze
 
   module_function
 
